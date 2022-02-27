@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Unlisted Levels</title>
+		<link rel="stylesheet" href="../style.css"/>
+	</head>
+	
+	<body>
+		
+		
+		<div class="smain nofooter">
+			<h1>Unlisted Levels</h1>
+		    <table><tr><th>ID</th><th>Name</th></tr>
 <?php
 include "../../incl/lib/connection.php";
 require "../../incl/lib/generatePass.php";
@@ -16,7 +29,7 @@ if(!empty($_POST["userName"]) AND !empty($_POST["password"])){
 			$query = $db->prepare("SELECT levelID, levelName FROM levels WHERE extID=:extID AND unlisted=1");	
 			$query->execute([':extID' => $accountID]);
 			$result = $query->fetchAll();
-			echo '<table border="1"><tr><th>ID</th><th>Name</th></tr>';
+			
 			foreach($result as &$level){
 				echo "<tr><td>".$level["levelID"]."</td><td>".$level["levelName"]."</td></tr>";
 			}
@@ -30,3 +43,6 @@ if(!empty($_POST["userName"]) AND !empty($_POST["password"])){
 		<br>Password: <input type="password" name="password"><br><input type="submit" value="Show Unlisted Levels"></form>';
 }
 ?>
+		</div>
+	</body>
+</html>
